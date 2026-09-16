@@ -1,20 +1,33 @@
 {
-  "name": "express-workshop",
+  "name": "Express_Workshop_September-2026",
   "version": "1.0.0",
-  "description": "An API Rest using express.js",
+  "description": "An API Rest using Express.js",
   "keywords": [
     "api",
     "rest",
     "express",
-    "nodejs"
+    "nodejs",
+    "jwt",
+    "mysql"
   ],
   "author": "Joachim M. Mart",
+  "license": "ISC",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon Index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoachiMikiller/Express_Workshop_September-2026.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JoachiMikiller/Express_Workshop_September-2026/issues"
+  },
+  "homepage": "https://github.com/JoachiMikiller/Express_Workshop_September-2026#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
   }
 }
