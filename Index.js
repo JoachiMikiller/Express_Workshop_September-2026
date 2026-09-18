@@ -2,7 +2,7 @@
 const bodyParser = require('body-parser')
 const express = require("express");
 const app = express();
-const {pokemon} = require('./pokedex.json')
+const {pokemon} = require('./pokedex.json');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
