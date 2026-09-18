@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const {pokemon} = require('./pokedex.json')
+const {pokemon} = require('./pokedex.json');
 
 app.get("/", (request, response, next) => 
     {response.status(200);
@@ -13,10 +13,10 @@ app.get('/pokemon/all', (request, response, next) =>
 app.get(/^\/pokemon\/([0-9]{1,3})$/, (request, response, next) =>
     {const id = request.params.id - 1;
      if (!(id >= 0 && id <= 150))
-    {response.status(200)
+    {response.status(200);
      response.send('Pokemon no Encontrado');
      return;}
-     response.status();
+     response.status(404);
      response.send(pokemonid[id]);});
 
 app.get('/pokemon/:name',(request, response, next)  => 
@@ -26,7 +26,7 @@ app.get('/pokemon/:name',(request, response, next)  =>
                 {response.status(200);
                  response.send(pokemon[i]);}}
         response.status(404);
-        response.send("Pokemon no Encontrado");})
+        response.send("Pokemon no Encontrado");});
 
 app.listen(process.env.PORT || 3000, () => 
     {console.log('Server is runnig...');});
