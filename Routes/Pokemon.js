@@ -3,9 +3,19 @@ const pokemon = express.Router();
 const db = require('../Configuration/DataBase');
 const pk = require('../pokedex.json').pokemon;
 
-pokemon.post("/", (request, response, next) => 
-    {return response.status(200).json(request.body);});
-
+pokemon.post("/", async(request, response, next) => 
+    {const { pok_name, pok_height, pok_weight, pok_base_experience } = request.body;
+    if (pok_name && pok_height && pok_weight && pok_base_experience) 
+        {let query = "INSERT INTO pokemon (pok_name, pok_height, pok_weight, pok_base_experience)";
+         query += `VALUES ('${pok_name}', ${pok_height}, ${pok_weight}, ${pok_base_experience})`;
+         const rows = await db.query(query);
+         console.log(rows);
+   
+         if (rows.affectedRows == 1) {return response.status(201).json({code: 201, message: "Pokemon Insertado Correctamente"});}
+         return response.status(500).json({code: 500, message: "Ocurrió un Error"});
+        } return response.status(500).json({code: 500, message: "Campos Incompletos"});
+    }       );
+     
 pokemon.get('/', async(request, response, next) => 
     {const pkmn = await db.query("SELECT * FROM pokemon");
         //console.log(pk);
@@ -16,7 +26,7 @@ pokemon.get(/^\/([0-9]{1,3})$/, async(request, response, next) =>
     {const id = request.params[0];
         if ((id >= 1 && id <= 722)) 
             {const pokemon = await db.query("SELECT * FROM pokemon WHERE pok_id = " + id + ";");
-     return response.status(200).json({code: 1, message: pkmn});}
+     return response.status(200).json({code: 200, message: pkmn});}
      return response.status(404).send({code: 404, message: "Pokemon no Encontrado"});});
 
          //(/^\/pokemon\/([A-Za-z]+)$/,
@@ -30,7 +40,7 @@ pokemon.get(/^\/([A-Za-z]+)$/, async(request, response, next)  =>
         //pk.filter((p) => 
         //{return (p.name.toUpperCase() == name.toUpperCase()) ? p : null;});
         return (pkmn.length > 0) ? 
-        response.status(200).json({code: 1, message: pkmn})         :
+        response.status(200).json({code: 200, message: pkmn})         :
         response.status(404).send({code: 404, message: "Pokemon no Encontrado"});});
 
 module.exports = pokemon;
