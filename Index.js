@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const express = require('express');
 const app = express();
 const pokemon = require('./Routes/Pokemon');
+const user = require('./Routes/User');
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -20,6 +21,7 @@ app.get("/", (request, response, next) =>
     {return response.status(200).json({code: 1, message: "Bienvenido al Pokedex"});});
 
 app.use("/pokemon", pokemon);
+app.use("/user", user);
 
 app.use((request, response, next) => 
     {return response.status(404).json({code: 404, message: "URL no Encontrado"});});

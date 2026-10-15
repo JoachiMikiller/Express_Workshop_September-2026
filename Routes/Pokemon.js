@@ -1,7 +1,7 @@
 const express = require('express');
 const pokemon = express.Router();
 const db = require('../Configuration/DataBase');
-const pk = require('../pokedex.json').pokemon;
+//const pk = require('../pokedex.json').pokemon;
 
 pokemon.post("/", async(request, response, next) => 
     {const { pok_name, pok_height, pok_weight, pok_base_experience } = request.body;
