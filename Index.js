@@ -38,7 +38,7 @@ app.listen(process.env.PORT || 3000, () =>
     {console.log('Server is runnig...');
     }     );
 
-    //Para cerrar el servidor es con Ctrl + -C
-    //req = request (sirve para peticion del usuario)
-    //res = response
-    //require (importa herramientas o modulos)
+//Para cerrar el servidor es con Ctrl + -C
+//req = request (sirve para peticion del usuario)
+//res = response
+//require (importa herramientas o modulos)
