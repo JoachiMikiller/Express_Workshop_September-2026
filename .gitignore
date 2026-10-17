@@ -1,1 +1,4 @@
 nodes_modules
+
+# Ignore UI
+Pokedex/
