@@ -14,7 +14,9 @@ const user = require('./Routes/User');
 const Authorizathion = require('./MiddleWare/Authorization');
 const Not_Found = require('./MiddleWare/Not_Found');
 const Index_In = require('./MiddleWare/Index_In');
+const Cors = require('./MiddleWare/Cors');
 
+app.use(Cors);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
