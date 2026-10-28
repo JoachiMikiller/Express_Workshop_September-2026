@@ -25,7 +25,7 @@ user.post("/login", async(request, response, next) =>
         {if (rows.length == 1) 
             {const token = jwt.sign({user_id: rows[0].user_id, user_mail: rows[0].user_mail}, "debug_key");
              return response.status(200).json({code: 200, message: token});}
-         else {return response.status(200).json({code: 200, message:"Usuario y/o Contraseña Incorrectos"});}
+         else {return response.status(200).json({code: 401, message:"Usuario y/o Contraseña Incorrectos"});}
         }return response.status(500).json({code: 500, message: "Campos Incompletos"});
     }    );    
 
